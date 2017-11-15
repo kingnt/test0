@@ -13,7 +13,7 @@ http.createServer( function (request, response) {
    
    // 从文件系统中读取请求的文件内容
    var tar = pathname.substr(1);
-   if(tar == null) tar = 'index.html'
+   if(tar == '') tar = 'index.html'
    console.log("tar = " + tar)
    fs.readFile(tar, function (err, data) {
       if (err) {

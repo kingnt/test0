@@ -12,7 +12,9 @@ http.createServer( function (request, response) {
    console.log("Request for " + pathname + " received.");
    
    // 从文件系统中读取请求的文件内容
-   fs.readFile(pathname.substr(1), function (err, data) {
+   var tar = pathname.substr(1);
+   if(tar == null) tar = 'index.html'
+   fs.readFile(tar, function (err, data) {
       if (err) {
          console.log(err);
          // HTTP 状态码: 404 : NOT FOUND

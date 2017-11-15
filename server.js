@@ -1,11 +1,12 @@
 var http = require('http');
 var fs = require('fs');
 var url = require('url');
-
-
+var express = require('express');
+var app = express();
 // 创建服务器
 http.createServer( function (request, response) {  
    // 解析请求，包括文件名
+   app.use(express.static(path.join(__dirname, 'public')));
    var pathname = url.parse(request.url).pathname;
    if(pathname)
    // 输出请求的文件名
@@ -13,8 +14,8 @@ http.createServer( function (request, response) {
    
    // 从文件系统中读取请求的文件内容
    var tar = pathname.substr(1);
-   if(tar == '') tar = 'index.html'
-   console.log("tar = " + tar)
+   if(tar == '') tar = 'index.html';
+   console.log("tar = " + tar);
    fs.readFile(tar, function (err, data) {
       if (err) {
          console.log(err);

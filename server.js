@@ -3,6 +3,7 @@ var fs = require('fs');
 var url = require('url');
 var express = require('express');
 var app = express();
+var path = require('path');
 // 创建服务器
 http.createServer( function (request, response) {  
    // 解析请求，包括文件名

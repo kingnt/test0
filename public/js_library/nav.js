@@ -12,17 +12,22 @@ var init = function () {
     ht[id] = $(window).height();
 }
 init();
-$(window).resize(function() {
+$(window).resize(function () {
     init();
 });
 var cnt = 0;
 $(document).scroll(function () {
     var cur = $(document).scrollTop();
-    for(var i = 0; i < id; i++) {
-        if(cur >= ht[i] && cur < ht[i + 1]) {
-           // console.log('now at div' + i);
-           $("#pill"+i).addClass("active");
-           for(var j = 0; j < id; j++) if(j != i) $("#pill"+j).removeClass("active");
+    if (cur < ht[0]) {
+        for (var j = 0; j < id; j++) if (j != i) $("#pill" + j).removeClass("active");
+    }
+    else {
+        for (var i = 0; i < id; i++) {
+            if (cur >= ht[i] && cur < ht[i + 1]) {
+                // console.log('now at div' + i);
+                $("#pill" + i).addClass("active");
+                for (var j = 0; j < id; j++) if (j != i) $("#pill" + j).removeClass("active");
+            }
         }
     }
 });

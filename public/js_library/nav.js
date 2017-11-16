@@ -1,14 +1,15 @@
 var ht = new Array();
 var id = 0;
 var init = function () {
-    ht[0] = $('#head').height() - $('#nav').height();
+    //console.log($('#head').height() - $('#nav').height());
+    ht[0] = $('#head').height() + $('#nav').height();
     id = 0;
     $('.mydiv').each(function () {
         ht[++id] = $(this).height();
     });
     for (var i = 1; i < id; i++) ht[i] += ht[i - 1];
     //for (var i = 0; i < id; i++)
-    console.log('ht[0] = ' + ht[0]);
+    //console.log('ht[0] = ' + ht[0]);
     ht[id] = $(window).height();
 }
 init();

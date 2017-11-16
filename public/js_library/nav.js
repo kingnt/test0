@@ -1,15 +1,13 @@
 var ht = new Array();
 var id = 0;
 var init = function () {
-    //console.log($('#head').height() - $('#nav').height());
-    ht[0] = $('#head').height() + $('#nav').height();
+    ht[0] = $('#head').height() + 2 * parseInt($('#head').css('padding').split('px')[0]) - $('#nav').height();
     id = 0;
     $('.mydiv').each(function () {
         ht[++id] = $(this).height();
+        //console.log(ht[id]);
     });
     for (var i = 1; i < id; i++) ht[i] += ht[i - 1];
-    //for (var i = 0; i < id; i++)
-    //console.log('ht[0] = ' + ht[0]);
     ht[id] = $(window).height();
 }
 init();
@@ -32,3 +30,7 @@ $(document).scroll(function () {
         }
     }
 });
+$('.mypill').click(function() {
+    var cur = $(this).attr('id').split('')[4];
+    $(document).scrollTop(ht[cur]);
+})

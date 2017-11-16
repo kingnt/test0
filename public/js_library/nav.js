@@ -19,7 +19,7 @@ var cnt = 0;
 $(document).scroll(function () {
     var cur = $(document).scrollTop();
     if (cur < ht[0]) {
-        for (var j = 0; j < id; j++) if (j != i) $("#pill" + j).removeClass("active");
+        for (var j = 0; j < id; j++) $("#pill" + j).removeClass("active");
     }
     else {
         for (var i = 0; i < id; i++) {

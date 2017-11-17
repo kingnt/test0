@@ -32,5 +32,5 @@ $(document).scroll(function () {
 });
 $('.mypill').click(function() {
     var cur = $(this).attr('id').split('')[4];
-    $(document).scrollTop(ht[cur]);
+    $('html,body').animate({scrollTop:ht[cur]}, 300);
 })
